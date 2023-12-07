@@ -8,9 +8,9 @@ public class menu extends JFrame implements ActionListener{
         this.setTitle("Moja Gra");
         this.setSize(1024, 768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null); // Wyśrodkowanie okna
+        this.setLocationRelativeTo(null); 
         this.setLayout(null);
-        this.setResizable(false); // Uniemożliwienie zmiany rozmiaru okna
+        this.setResizable(false); 
 
         przycisk= new JButton("Łatwy");
         przycisk.setBounds(100,100,100,40);
