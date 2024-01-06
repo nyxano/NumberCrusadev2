@@ -1,23 +1,21 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
 
 
-class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListener {
+class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdateListener {
 
-        int counter=0;
-        JLabel topic_1= new JLabel();
-        JLabel topic_2= new JLabel();
-        JLabel topic_3= new JLabel();
-        int scoreMain=randomNum2();
-        private timerCounter timerCounterInstance;
-        private String timeOfGame;
-    public Gra() {
+    int counter=0;
+    JLabel topic_1= new JLabel();
+    JLabel topic_2= new JLabel();
+    JLabel topic_3= new JLabel();
+    int scoreMain=randomNum2();
+    private timerCounter timerCounterInstance;
+    private String timeOfGame;
+    public GraSredni() {
 
         timerCounterInstance = new timerCounter(this);
         //Config of Jlabel include Images and values
@@ -199,7 +197,7 @@ class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListen
     }
 
     public String getTimeOfGame(){
-     return timeOfGame;
+        return timeOfGame;
     }
 
     public void timeOfGameToOpenWindowAfterWin(openWindowAfterWin x){
