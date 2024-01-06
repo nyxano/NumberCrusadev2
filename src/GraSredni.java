@@ -16,6 +16,7 @@ class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdate
     JLabel topic_3= new JLabel();
     JButton menu=new JButton();
     int scoreMain=randomNum2();
+    private int currentOperation = 1;
     private timerCounter timerCounterInstance;
     private String timeOfGame;
     public GraSredni() {
@@ -162,16 +163,27 @@ class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdate
     public void mouseClicked(MouseEvent e) {
         JLabel clickedLabel=(JLabel) e.getSource();
         int score=getCurrentScore(clickedLabel);
-        clickedLabel.setText(String.valueOf(randomNum()));
-        counter += score;
+        if(currentOperation==1) {
+            topic_1.setText("Dodawanie");
+            clickedLabel.setText(String.valueOf(randomNum()));
+            counter += score;
+        } else if (currentOperation==2) {
+            topic_1.setText("Odejmowanie");
+            clickedLabel.setText(String.valueOf(randomNum()));
+            counter-= score;
+        }
         topic_2.setText("Wynik: " + counter + "/" + scoreMain);
 
         if(counter==scoreMain){
             this.dispose();
             new openWindowAfterWin();
-        } else if (counter>scoreMain) {
-            this.dispose();
-            new openWindowAfterLoss();
+        }
+        currentOperation = randomNum3();
+
+        if (currentOperation == 1) {
+            topic_1.setText("Dodawanie");
+        } else if (currentOperation == 2) {
+            topic_1.setText("Odejmowanie");
         }
     }
 
@@ -227,6 +239,11 @@ class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdate
         //Generate random numbers of label and score
         Random randomNumbers= new Random();
         int x= randomNumbers.nextInt(15)+10;
+        return x;
+    }
+    public int randomNum3(){
+        Random randomNumbers= new Random();
+        int x= randomNumbers.nextInt(2)+1;
         return x;
     }
     private int getCurrentScore(JLabel label){
