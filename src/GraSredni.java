@@ -1,17 +1,20 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
 
 
-class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdateListener {
+class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdateListener, ActionListener {
 
     int counter=0;
     JLabel topic_1= new JLabel();
     JLabel topic_2= new JLabel();
     JLabel topic_3= new JLabel();
+    JButton menu=new JButton();
     int scoreMain=randomNum2();
     private timerCounter timerCounterInstance;
     private String timeOfGame;
@@ -102,21 +105,29 @@ class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdate
 
         JPanel topic = new JPanel();
         topic.setBackground(new Color(255, 230, 204));
-        topic.setBounds(0, 0, 460, 75);
+        topic.setBounds(0, 0, 400, 75);
         Border border2 = BorderFactory.createLineBorder(Color.BLACK, 3);
         topic.setBorder(border2);
 
         JPanel topic2 = new JPanel();
         topic2.setBackground(new Color(255, 230, 204));
-        topic2.setBounds(460, 0, 250, 75);
+        topic2.setBounds(400, 0, 270, 75);
         Border border3 = BorderFactory.createLineBorder(Color.BLACK, 3);
         topic2.setBorder(border3);
 
         JPanel topic3 = new JPanel();
         topic3.setBackground(new Color(255, 230, 204));
-        topic3.setBounds(710, 0, 314, 75);
+        topic3.setBounds(670, 0, 250, 75);
         Border border4 = BorderFactory.createLineBorder(Color.BLACK, 3);
         topic3.setBorder(border4);
+
+        ImageIcon menuOfPicture=new ImageIcon("multiplyBT.png");
+        menu.setIcon(menuOfPicture);
+        menu.setBackground(new Color(255, 22, 22, 255));
+        menu.setBounds(920, 0, 100, 75);
+        Border border5 = BorderFactory.createLineBorder(Color.BLACK, 3);
+        menu.setBorder(border5);
+        menu.addActionListener(this);
 
         //Config of JFrame
         this.setTitle("Moja Gra");
@@ -136,6 +147,7 @@ class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdate
         this.add(topic);
         this.add(topic2);
         this.add(topic3);
+        this.add(menu);
         label.addMouseListener(this);
         label2.addMouseListener(this);
         label3.addMouseListener(this);
@@ -227,4 +239,11 @@ class GraSredni extends JFrame implements MouseListener, timerCounter.TimeUpdate
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==menu) {
+            this.dispose();
+            new menuOfGame();
+        }
+    }
 }

@@ -12,7 +12,7 @@ public class openWindowAfterLoss extends JFrame implements ActionListener{
 
     private String getScoreFromGra;
     public openWindowAfterLoss(){
-        this.setTitle("Gratulacje");
+        this.setTitle("Spróbuj ponownie");
         this.setSize(512, 512);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -21,13 +21,10 @@ public class openWindowAfterLoss extends JFrame implements ActionListener{
         this.setVisible(true);
 
         scoreOfTime.setText("Niestety nie zdobyłeś dokladnej liczby punktów");
-        scoreOfTime.setFont(new Font("Arial",Font.PLAIN,42));
+        scoreOfTime.setFont(new Font("Arial",Font.PLAIN,22));
 
         JPanel scoreOfTime2= new JPanel();
-        scoreOfTime2.setBackground(new Color(255, 230, 204));
-        scoreOfTime2.setBounds(0,0,460,75);
-        Border border2=BorderFactory.createLineBorder(Color.BLACK,3);
-        scoreOfTime2.setBorder(border2);
+        scoreOfTime2.setBounds(0,50,500,75);
 
         this.add(scoreOfTime2);
         scoreOfTime2.add(scoreOfTime);
