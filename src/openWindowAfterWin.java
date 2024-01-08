@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class openWindowAfterWin extends JFrame implements ActionListener{
-        private JButton tryAgain;
-        private JButton getMenu;
+        private JButton goToMenu;
+        private JButton buttonofleave;
 
         JLabel scoreOfTime= new JLabel();
 
@@ -29,33 +29,33 @@ public class openWindowAfterWin extends JFrame implements ActionListener{
         this.add(scoreOfTime2);
         scoreOfTime2.add(scoreOfTime);
 
-        tryAgain= new JButton("Powtórz poziom");
-        tryAgain.setBounds(100,120,300,70);
-        tryAgain.setForeground(Color.BLACK);
-        tryAgain.setBackground(Color.WHITE);
-        tryAgain.setFont(new Font("Arial",Font.PLAIN,34));
-        tryAgain.setBorder(BorderFactory.createEtchedBorder());
-        tryAgain.addActionListener(this);
-        this.add(tryAgain);
+        goToMenu= new JButton("Powrót do menu");
+        goToMenu.setBounds(100,120,300,70);
+        goToMenu.setForeground(Color.BLACK);
+        goToMenu.setBackground(Color.WHITE);
+        goToMenu.setFont(new Font("Arial",Font.PLAIN,34));
+        goToMenu.setBorder(BorderFactory.createEtchedBorder());
+        goToMenu.addActionListener(this);
+        this.add(goToMenu);
 
-        getMenu= new JButton("Powrót do menu");
-        getMenu.setBounds(100,250,300,70);
-        getMenu.setForeground(Color.BLACK);
-        getMenu.setBackground(Color.WHITE);
-        getMenu.setFont(new Font("Arial",Font.PLAIN,34));
-        getMenu.setBorder(BorderFactory.createEtchedBorder());
-        getMenu.addActionListener(this);
-        this.add(getMenu);
+        buttonofleave= new JButton("Wyjscie");
+        buttonofleave.setBounds(100,250,300,70);
+        buttonofleave.setForeground(Color.BLACK);
+        buttonofleave.setBackground(Color.WHITE);
+        buttonofleave.setFont(new Font("Arial",Font.PLAIN,34));
+        buttonofleave.setBorder(BorderFactory.createEtchedBorder());
+        buttonofleave.addActionListener(this);
+        this.add(buttonofleave);
 
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == tryAgain) {
+        if (e.getSource() == goToMenu) {
             this.dispose();
             new Gra();
-        } else if (e.getSource()==getMenu) {
+        } else if (e.getSource()==buttonofleave) {
             this.dispose();
-            new menu();
+            System.exit(0);
         }
     }
 

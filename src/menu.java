@@ -36,7 +36,7 @@ public class menu extends JFrame implements ActionListener{
         przycisk.addActionListener(this);
 
         przycisk2= new JButton("Średni");
-        przycisk2.setBounds(350,320,300,70);
+        przycisk2.setBounds(350,300,300,70);
         przycisk2.setForeground(Color.BLACK);
         przycisk2.setBackground(Color.WHITE);
         przycisk2.setFont(new Font("Arial",Font.PLAIN,34));
@@ -44,7 +44,7 @@ public class menu extends JFrame implements ActionListener{
         przycisk2.addActionListener(this);
 
         przycisk3= new JButton("Trudny");
-        przycisk3.setBounds(350,490,300,70);
+        przycisk3.setBounds(350,450,300,70);
         przycisk3.setForeground(Color.BLACK);
         przycisk3.setBackground(Color.WHITE);
         przycisk3.setFont(new Font("Arial",Font.PLAIN,34));
