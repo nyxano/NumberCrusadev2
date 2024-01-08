@@ -6,6 +6,7 @@ public class menu extends JFrame implements ActionListener{
         private JButton przycisk;
         private JButton przycisk2;
         private JButton przycisk3;
+        private JButton przycisk4;
         JLabel topicOfMenu1=new JLabel();
 
     public menu(){
@@ -50,6 +51,14 @@ public class menu extends JFrame implements ActionListener{
         przycisk3.setBorder(BorderFactory.createEtchedBorder());
         przycisk3.addActionListener(this);
 
+        przycisk4= new JButton("Wyjscie");
+        przycisk4.setBounds(350,600,300,70);
+        przycisk4.setForeground(Color.BLACK);
+        przycisk4.setBackground(Color.WHITE);
+        przycisk4.setFont(new Font("Arial",Font.PLAIN,34));
+        przycisk4.setBorder(BorderFactory.createEtchedBorder());
+        przycisk4.addActionListener(this);
+
         JPanel topicOfMenu= new JPanel();
         topicOfMenu.setBounds(280,0,460,75);
         topicOfMenu.setBackground(new Color(107, 240, 0));
@@ -60,6 +69,7 @@ public class menu extends JFrame implements ActionListener{
         this.add(przycisk);
         this.add(przycisk2);
         this.add(przycisk3);
+        this.add(przycisk4);
         this.add(topicOfMenu);
         topicOfMenu.add(topicOfMenu1);
     }
@@ -69,7 +79,16 @@ public class menu extends JFrame implements ActionListener{
             new Gra();
         } else if(e.getSource()==przycisk2) {
             this.dispose();
-            new GraSredni();
+            new Gra2();
+
+        }
+        else if(e.getSource()==przycisk3) {
+            this.dispose();
+            new Gra3();
+        }
+        else if(e.getSource()==przycisk4) {
+            this.dispose();
+            System.exit(0);
         }
     }
     public static void main(String[] args){

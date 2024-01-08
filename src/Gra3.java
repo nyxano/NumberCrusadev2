@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListener, ActionListener {
+class Gra3 extends JFrame implements MouseListener, timerCounter.TimeUpdateListener, ActionListener {
 
     int counter = 0;
     JLabel topic_1 = new JLabel();
@@ -21,8 +21,9 @@ class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListen
     int scoreMain = randomNum2();
     private timerCounter timerCounterInstance;
     private BouncingBalls bouncingBalls;
+    private int currentOperation = 1;
 
-    public Gra() {
+    public Gra3() {
 
         timerCounterInstance = new timerCounter(this);
         //Config of Jlabel include Images and values
@@ -175,16 +176,43 @@ class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListen
     public void mouseClicked(MouseEvent e) {
         JLabel clickedLabel = (JLabel) e.getSource();
         int score = getCurrentScore(clickedLabel);
-        clickedLabel.setText(String.valueOf(randomNum()));
-        counter += score;
+        if(currentOperation>=1&&currentOperation<=4) {
+            topic_1.setText("Dodawanie");
+            clickedLabel.setText(String.valueOf(randomNum()));
+            counter += score;
+        } else if (currentOperation>=5&&currentOperation<=8) {
+            topic_1.setText("Odejmowanie");
+            clickedLabel.setText(String.valueOf(randomNum()));
+            counter-= score;
+        } else if (currentOperation==9) {
+            topic_1.setText("Dzielenie");
+            clickedLabel.setText(String.valueOf(randomNum()));
+            counter/= score;
+        } else if (currentOperation==10) {
+            topic_1.setText("Mnożenie");
+            clickedLabel.setText(String.valueOf(randomNum()));
+            counter*= score;
+        }
+
+
         topic_2.setText("Wynik: " + counter + "/" + scoreMain);
 
         if (counter == scoreMain) {
             this.dispose();
             new openWindowAfterWin();
-        } else if (counter > scoreMain) {
-            this.dispose();
-            new openWindowAfterLoss();
+        }
+        currentOperation = randomNum3();
+
+        if (currentOperation>=1&&currentOperation<=4) {
+            topic_1.setText("Dodawanie");
+        } else if (currentOperation>=5&&currentOperation<=8) {
+            topic_1.setText("Odejmowanie");
+        }
+        else if (currentOperation == 9) {
+            topic_1.setText("Dzielenie");
+        }
+        else if (currentOperation == 10) {
+            topic_1.setText("Mnożenie");
         }
     }
 
@@ -225,7 +253,12 @@ class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListen
     public int randomNum2(){
         //Generate random numbers of label and score
         Random randomNumbers= new Random();
-        int x= randomNumbers.nextInt(15)+10;
+        int x= randomNumbers.nextInt(100)+10;
+        return x;
+    }
+    public int randomNum3(){
+        Random randomNumbers= new Random();
+        int x= randomNumbers.nextInt(10)+1;
         return x;
     }
     private int getCurrentScore(JLabel label){
@@ -247,7 +280,7 @@ class Gra extends JFrame implements MouseListener, timerCounter.TimeUpdateListen
         private static final int WIDTH = 1024;
         private static final int HEIGHT = 768;
         private static final int BALL_RADIUS = 20;
-        private static final int NUM_BALLS = 3;
+        private static final int NUM_BALLS = 7;
 
         private java.util.List<Ball> balls;
 
